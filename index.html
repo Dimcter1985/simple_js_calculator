@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>simple calculator</title>
+</head>
+<body>
+  <p>
+    введите первое число: <input type="text" id="first_num">
+  </p>
+  введите второе число: <input type="text" id="second_num">
+  <p id="all">
+    <button id="fold">+</button>
+    <button id="deduct">-</button>
+    <button id="multiply">*</button>
+    <button id="divide">/</button>
+  </p>
+  <p id="result"></p>
+  <script>
+    let all = document.getElementById('all');
+    let fold = document.getElementById('fold');
+    let deduct = document.getElementById('deduct');
+    let multiply = document.getElementById('multiply');
+    let divide = document.getElementById('divide');
+    let result = document.getElementById('result');
+
+    all.addEventListener('click', ({target}) => {
+      let num1 = +document.getElementById('first_num').value;
+      let num2 = +document.getElementById('second_num').value;
+
+      if (isNaN(num1) || isNaN(num2)) {
+        result.innerHTML = 'введите число!';
+      } else {
+        switch(target) {
+        case fold:
+          result.innerHTML = num1 + num2;
+          break
+        case deduct:
+          result.innerHTML = num1 - num2;
+          break
+        case multiply:
+          result.innerHTML = num1 * num2;
+          break
+        case divide:
+          result.innerHTML = num1 / num2;
+            if(num1 === 0) {
+              result.innerHTML = 0;
+            }
+            if(num2 === 0) {
+              result.innerHTML = 'Деление на ноль невозможно!';
+            }
+          break
+        }
+      }
+    })
+  </script>
+</body>
+</html>
